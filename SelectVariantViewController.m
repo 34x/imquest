@@ -79,7 +79,7 @@
     
     [self.view addSubview:waitIndicator];
     
-    currentBlur = 15;
+    currentBlur = 10;
 
     [self drawImage:currentBlur];
     
@@ -236,11 +236,18 @@
     CIImage *image =
     
     [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:self.questItem.img ofType:@"jpg"]]];
-    
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];           // 3
-    
+/*
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+        
     [filter setValue:image forKey:kCIInputImageKey];
     [filter setValue: blurValue forKey:kCIInputRadiusKey];
+*/
+        
+    CIFilter *filter = [CIFilter filterWithName:@"CIPixellate"];
+        
+    [filter setValue:image forKey:kCIInputImageKey];
+    [filter setValue: blurValue forKey:kCIInputScaleKey];
+        
     CIImage *result = [filter valueForKey:kCIOutputImageKey];              // 4
         
     CGRect extent = [result extent];
@@ -288,7 +295,7 @@
 - (void) tapDouble:(UITapGestureRecognizer*)event
 {
     if(currentBlur > 0) {
-        [self drawImage:currentBlur - 5.0f];
+        [self drawImage:currentBlur - 2.5f];
         points = points - 20;
     }
 }

@@ -78,6 +78,21 @@
             suffix = @"";
         }
         
+        CIImage *image = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:item.img ofType:@"jpg"]]];
+        
+        
+//        CGImage
+        CIContext *context = [[CIContext alloc] init];
+        CGImageRef imageRef = [context createCGImage:image fromRect:CGRectMake(20, 20, 200, 40)];
+        CIImage *cropped = [CIImage imageWithCGImage:imageRef];
+//        UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+
+        UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithCIImage:image]];
+//        [self.scroll addSubview:iv];
+
+        
+        [button setBackgroundImage:[UIImage imageWithCIImage:cropped] forState:UIControlStateNormal];
+
         
         NSString *title = [NSString stringWithFormat:@"Картинка № %i %@", i+1, suffix];
         button.tag = i;
