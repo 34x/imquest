@@ -79,15 +79,26 @@
         }
         
         CIImage *image = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:item.img ofType:@"jpg"]]];
+
+        CIVector *cropRect =[CIVector vectorWithX:0 Y:0 Z: viewWidth/10*8 W: 10];
         
+        CIImage *cropped = [image imageByCroppingToRect:CGRectMake(0, 0, viewWidth/10*8, 40)];
+        
+//        CIFilter *cropFilter = [CIFilter filterWithName:@"CICrop"];
+        
+//        [cropFilter setValue:image forKey:@"inputImage"];
+//        [cropFilter setValue:cropRect forKey:@"inputRectangle"];
+        
+//        CIImage *cropped = [cropFilter valueForKey:@"outputImage"];
+
         
 //        CGImage
-        CIContext *context = [[CIContext alloc] init];
-        CGImageRef imageRef = [context createCGImage:image fromRect:CGRectMake(20, 20, 200, 40)];
-        CIImage *cropped = [CIImage imageWithCGImage:imageRef];
+//        CIContext *context = [[CIContext alloc] init];
+//        CGImageRef imageRef = [context createCGImage:image fromRect:CGRectMake(20, 20, 200, 40)];
+//        CIImage *cropped = [CIImage imageWithCGImage:imageRef];
 //        UIImage *cropped = [UIImage imageWithCGImage:imageRef];
 
-        UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithCIImage:image]];
+        UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithCIImage:cropped]];
 //        [self.scroll addSubview:iv];
 
         
@@ -96,9 +107,10 @@
         
         NSString *title = [NSString stringWithFormat:@"Картинка № %i %@", i+1, suffix];
         button.tag = i;
+        button.alpha = 0.5f;
         [button setTitle:title forState:UIControlStateNormal];
         [button addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
-        //[button.layer setBorderWidth:0.4f];
+//        [button.layer setBorderWidth:0.4f];
         [self.scroll addSubview:button];
         
         listHeight = y + 150;
