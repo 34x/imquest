@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>75A26EF8-17D7-4483-A9EE-74150537F72D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>image_quest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6F330B24-A1A9-4A31-B132-14A2BB3C0E95</key>
+		<string>ssh://github.com/34x/imquest.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>image_quest.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6F330B24-A1A9-4A31-B132-14A2BB3C0E95</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/34x/imquest.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6F330B24-A1A9-4A31-B132-14A2BB3C0E95</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6F330B24-A1A9-4A31-B132-14A2BB3C0E95</string>
+			<key>IDESourceControlWCCName</key>
+			<string>image_quest</string>
+		</dict>
+	</array>
+</dict>
+</plist>

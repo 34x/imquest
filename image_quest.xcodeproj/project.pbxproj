@@ -12,6 +12,10 @@
 		502D7A1818E838230005007F /* garin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A1718E838230005007F /* garin.jpg */; };
 		502D7A1A18E839E30005007F /* freeman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A1918E839E30005007F /* freeman.jpg */; };
 		502D7A1C18E83A6F0005007F /* robbins.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A1B18E83A6F0005007F /* robbins.jpg */; };
+		502D7A1E18E850E00005007F /* bale.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A1D18E850E00005007F /* bale.jpg */; };
+		502D7A2018E852EC0005007F /* norton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A1F18E852EC0005007F /* norton.jpg */; };
+		502D7A2218E854500005007F /* smith.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A2118E854500005007F /* smith.jpg */; };
+		502D7A2418E8552B0005007F /* jackson.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A2318E8552B0005007F /* jackson.jpg */; };
 		508AFDB118DDE1DD00230BC8 /* SelectVariantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508AFDB018DDE1DD00230BC8 /* SelectVariantViewController.m */; };
 		508AFDDA18DE249900230BC8 /* arny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508AFDD418DE249900230BC8 /* arny.jpg */; };
 		508AFDDB18DE249900230BC8 /* gagarin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508AFDD518DE249900230BC8 /* gagarin.jpg */; };
@@ -57,6 +61,10 @@
 		502D7A1718E838230005007F /* garin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = garin.jpg; sourceTree = "<group>"; };
 		502D7A1918E839E30005007F /* freeman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = freeman.jpg; sourceTree = "<group>"; };
 		502D7A1B18E83A6F0005007F /* robbins.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = robbins.jpg; sourceTree = "<group>"; };
+		502D7A1D18E850E00005007F /* bale.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bale.jpg; sourceTree = "<group>"; };
+		502D7A1F18E852EC0005007F /* norton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = norton.jpg; sourceTree = "<group>"; };
+		502D7A2118E854500005007F /* smith.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smith.jpg; sourceTree = "<group>"; };
+		502D7A2318E8552B0005007F /* jackson.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jackson.jpg; sourceTree = "<group>"; };
 		508AFDAF18DDE1DD00230BC8 /* SelectVariantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectVariantViewController.h; path = ../SelectVariantViewController.h; sourceTree = "<group>"; };
 		508AFDB018DDE1DD00230BC8 /* SelectVariantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectVariantViewController.m; path = ../SelectVariantViewController.m; sourceTree = "<group>"; };
 		508AFDD418DE249900230BC8 /* arny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = arny.jpg; sourceTree = "<group>"; };
@@ -122,10 +130,14 @@
 			isa = PBXGroup;
 			children = (
 				502D7A1518E837DD0005007F /* demyanenko.jpg */,
+				502D7A2118E854500005007F /* smith.jpg */,
 				509439FB18E5B754007E0E85 /* jim2.jpg */,
 				502D7A1718E838230005007F /* garin.jpg */,
 				502D7A1B18E83A6F0005007F /* robbins.jpg */,
+				502D7A2318E8552B0005007F /* jackson.jpg */,
+				502D7A1F18E852EC0005007F /* norton.jpg */,
 				502D7A1918E839E30005007F /* freeman.jpg */,
+				502D7A1D18E850E00005007F /* bale.jpg */,
 				508AFDD418DE249900230BC8 /* arny.jpg */,
 				508AFDD518DE249900230BC8 /* gagarin.jpg */,
 				508AFDD618DE249900230BC8 /* jim.jpg */,
@@ -297,8 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				502D7A1C18E83A6F0005007F /* robbins.jpg in Resources */,
+				502D7A2218E854500005007F /* smith.jpg in Resources */,
 				508AFDDD18DE249900230BC8 /* morgunov.jpg in Resources */,
 				509439FC18E5B754007E0E85 /* jim2.jpg in Resources */,
+				502D7A2418E8552B0005007F /* jackson.jpg in Resources */,
 				502D7A1A18E839E30005007F /* freeman.jpg in Resources */,
 				508AFDDC18DE249900230BC8 /* jim.jpg in Resources */,
 				508AFDFB18E3183500230BC8 /* data.csv in Resources */,
@@ -307,9 +321,11 @@
 				50A37DF918DDD764005B2611 /* Main.storyboard in Resources */,
 				508AFDDA18DE249900230BC8 /* arny.jpg in Resources */,
 				508AFDDE18DE249900230BC8 /* nikulin.jpg in Resources */,
+				502D7A1E18E850E00005007F /* bale.jpg in Resources */,
 				508AFDDF18DE249900230BC8 /* vicin.jpg in Resources */,
 				50A37DD118DDCEB6005B2611 /* InfoPlist.strings in Resources */,
 				50A37DD918DDCEB6005B2611 /* Images.xcassets in Resources */,
+				502D7A2018E852EC0005007F /* norton.jpg in Resources */,
 				508AFDDB18DE249900230BC8 /* gagarin.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

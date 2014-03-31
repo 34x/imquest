@@ -23,7 +23,9 @@
     Game *game;
     UIBarButtonItem *navRightButton;
     long points;
-    
+    NSArray *filters;
+    int selectedFilter;
+    UILabel *sliderLabel;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,9 +43,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"did load view with questItem");
-    
+    filters = [[NSArray alloc] initWithObjects:@"Gauss", @"Pixel", nil];
     points = 100;
-    
+    selectedFilter = 0;
     UIButton *titleLabel = [UIButton buttonWithType:UIButtonTypeInfoDark];
     [titleLabel setTitle:@" Игра" forState:UIControlStateNormal];
     titleLabel.frame = CGRectMake(0, 0, 70, 44);
@@ -71,15 +73,13 @@
     tapDoubleRecognizer.numberOfTapsRequired = 2;
     [self.view addGestureRecognizer:tapDoubleRecognizer];
     
-    
-    
     // image processing indicator
     waitIndicator = [[UIActivityIndicatorView alloc ] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [waitIndicator setCenter:CGPointMake(self.view.bounds.size.width/2.0, self.view.bounds.size.height / 2.0)];
     
     [self.view addSubview:waitIndicator];
     
-    currentBlur = 10;
+    currentBlur = 30;
 
     [self drawImage:currentBlur];
     
@@ -156,9 +156,54 @@
     
 }
 
+- (void)showControls
+{
+    UISlider *slider = [[UISlider alloc]initWithFrame:CGRectMake(10.0f, 75.0f, self.view.bounds.size.width-80.0f, 20.0f)];
+    [slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventTouchUpInside];
+    [slider setMinimumValue:0.0f];
+    [slider setMaximumValue:99.0f];
+    [slider setValue:currentBlur];
+    slider.alpha = 0.5f;
+    [self.view addSubview:slider];
+    
+    sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-50.0f, 75.0f, 40.0f, 20.0f)];
+    sliderLabel.alpha = 0.5f;
+    [self.view addSubview:sliderLabel];
+    
+    UISegmentedControl *filtersSelector = [[UISegmentedControl alloc] initWithFrame:CGRectMake(10.0f, 105.0f, self.view.bounds.size.width-20.0f, 30.0f)];
+    
+    for(int i=0; i < filters.count; i++) {
+        [filtersSelector insertSegmentWithTitle:[filters objectAtIndex:i] atIndex:i animated:YES];
+    }
+    
+    [filtersSelector addTarget:self action:@selector(selectFilter:) forControlEvents:UIControlEventValueChanged];
+    [filtersSelector setSelectedSegmentIndex:selectedFilter];
+    
+    filtersSelector.alpha = 0.5f;
+    
+    [self.view addSubview:filtersSelector];
+    
+    [self sliderChange:slider];
+}
+
+- (IBAction)selectFilter:(UISegmentedControl*)segment
+{
+    selectedFilter = (int)[segment selectedSegmentIndex];
+    [self drawImage:currentBlur];
+}
+
+- (IBAction)sliderChange:(UISlider*)slider
+{
+    [self drawImage:slider.value];
+
+    [sliderLabel setText:[NSString stringWithFormat:@"%i", (int)slider.value]];
+    NSLog(@"aaa: %f", slider.value);
+}
+
 - (void)touchNavTitle :(id)sender
 {
-    [self showHelp];
+//    [self showHelp];
+    [self showControls];
 }
 
 - (void)touchNavRight :(id)sender
@@ -236,17 +281,32 @@
     CIImage *image =
     
     [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:self.questItem.img ofType:@"jpg"]]];
-/*
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    
+    CIFilter *filter;
+    
+    if(0 == selectedFilter)
+    {
+        filter = [CIFilter filterWithName:@"CIGaussianBlur"];
         
-    [filter setValue:image forKey:kCIInputImageKey];
-    [filter setValue: blurValue forKey:kCIInputRadiusKey];
-*/
+        [filter setValue:image forKey:kCIInputImageKey];
+        [filter setValue: blurValue forKey:kCIInputRadiusKey];
+    }
+    else if (1 == selectedFilter)
+    {
+        filter = [CIFilter filterWithName:@"CIPixellate"];
         
-    CIFilter *filter = [CIFilter filterWithName:@"CIPixellate"];
-        
-    [filter setValue:image forKey:kCIInputImageKey];
-    [filter setValue: blurValue forKey:kCIInputScaleKey];
+        [filter setValue:image forKey:kCIInputImageKey];
+        [filter setValue: blurValue forKey:kCIInputScaleKey];
+
+    }
+    else if (2 == selectedFilter)
+    {
+        filter = [CIFilter filterWithName:@"CIZoomBlur"];
+
+        [filter setValue:image forKey:kCIInputImageKey];
+//        [filter setValue: currentBlur forKey:kCIInputRadiusKey];
+
+    }
         
     CIImage *result = [filter valueForKey:kCIOutputImageKey];              // 4
         
