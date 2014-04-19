@@ -16,6 +16,7 @@
 		502D7A2018E852EC0005007F /* norton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A1F18E852EC0005007F /* norton.jpg */; };
 		502D7A2218E854500005007F /* smith.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A2118E854500005007F /* smith.jpg */; };
 		502D7A2418E8552B0005007F /* jackson.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 502D7A2318E8552B0005007F /* jackson.jpg */; };
+		505A77AF18FA96D7009625E2 /* PackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A77AE18FA96D7009625E2 /* PackViewController.m */; };
 		508AFDB118DDE1DD00230BC8 /* SelectVariantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508AFDB018DDE1DD00230BC8 /* SelectVariantViewController.m */; };
 		508AFDDA18DE249900230BC8 /* arny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508AFDD418DE249900230BC8 /* arny.jpg */; };
 		508AFDDB18DE249900230BC8 /* gagarin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508AFDD518DE249900230BC8 /* gagarin.jpg */; };
@@ -24,7 +25,7 @@
 		508AFDDE18DE249900230BC8 /* nikulin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508AFDD818DE249900230BC8 /* nikulin.jpg */; };
 		508AFDDF18DE249900230BC8 /* vicin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508AFDD918DE249900230BC8 /* vicin.jpg */; };
 		508AFDE518DEE47D00230BC8 /* RoundRectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 508AFDE418DEE47D00230BC8 /* RoundRectButton.m */; };
-		508AFDEB18E2E67C00230BC8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508AFDEA18E2E67C00230BC8 /* HomeViewController.m */; };
+		508AFDEB18E2E67C00230BC8 /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508AFDEA18E2E67C00230BC8 /* SelectImageViewController.m */; };
 		508AFDEE18E2EB3700230BC8 /* QuestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 508AFDED18E2EB3700230BC8 /* QuestItem.m */; };
 		508AFDF118E2FC1400230BC8 /* QuestItemAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 508AFDF018E2FC1400230BC8 /* QuestItemAnswer.m */; };
 		508AFDFB18E3183500230BC8 /* data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 508AFDFA18E3183500230BC8 /* data.csv */; };
@@ -65,6 +66,8 @@
 		502D7A1F18E852EC0005007F /* norton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = norton.jpg; sourceTree = "<group>"; };
 		502D7A2118E854500005007F /* smith.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smith.jpg; sourceTree = "<group>"; };
 		502D7A2318E8552B0005007F /* jackson.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jackson.jpg; sourceTree = "<group>"; };
+		505A77AD18FA96D7009625E2 /* PackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackViewController.h; sourceTree = "<group>"; };
+		505A77AE18FA96D7009625E2 /* PackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackViewController.m; sourceTree = "<group>"; };
 		508AFDAF18DDE1DD00230BC8 /* SelectVariantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectVariantViewController.h; path = ../SelectVariantViewController.h; sourceTree = "<group>"; };
 		508AFDB018DDE1DD00230BC8 /* SelectVariantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectVariantViewController.m; path = ../SelectVariantViewController.m; sourceTree = "<group>"; };
 		508AFDD418DE249900230BC8 /* arny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = arny.jpg; sourceTree = "<group>"; };
@@ -75,8 +78,8 @@
 		508AFDD918DE249900230BC8 /* vicin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vicin.jpg; sourceTree = "<group>"; };
 		508AFDE318DEE47D00230BC8 /* RoundRectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundRectButton.h; sourceTree = "<group>"; };
 		508AFDE418DEE47D00230BC8 /* RoundRectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundRectButton.m; sourceTree = "<group>"; };
-		508AFDE918E2E67C00230BC8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		508AFDEA18E2E67C00230BC8 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		508AFDE918E2E67C00230BC8 /* SelectImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectImageViewController.h; sourceTree = "<group>"; };
+		508AFDEA18E2E67C00230BC8 /* SelectImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectImageViewController.m; sourceTree = "<group>"; };
 		508AFDEC18E2EB3700230BC8 /* QuestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestItem.h; sourceTree = "<group>"; };
 		508AFDED18E2EB3700230BC8 /* QuestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestItem.m; sourceTree = "<group>"; };
 		508AFDEF18E2FC1400230BC8 /* QuestItemAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestItemAnswer.h; sourceTree = "<group>"; };
@@ -193,8 +196,10 @@
 				50A37DD518DDCEB6005B2611 /* AppDelegate.h */,
 				50A37DD618DDCEB6005B2611 /* AppDelegate.m */,
 				50A37DF818DDD764005B2611 /* Main.storyboard */,
-				508AFDE918E2E67C00230BC8 /* HomeViewController.h */,
-				508AFDEA18E2E67C00230BC8 /* HomeViewController.m */,
+				505A77AD18FA96D7009625E2 /* PackViewController.h */,
+				505A77AE18FA96D7009625E2 /* PackViewController.m */,
+				508AFDE918E2E67C00230BC8 /* SelectImageViewController.h */,
+				508AFDEA18E2E67C00230BC8 /* SelectImageViewController.m */,
 				502D7A0918E6CD530005007F /* Game.h */,
 				502D7A0A18E6CD530005007F /* Game.m */,
 				50A37DD818DDCEB6005B2611 /* Images.xcassets */,
@@ -346,13 +351,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				502D7A0B18E6CD530005007F /* Game.m in Sources */,
+				505A77AF18FA96D7009625E2 /* PackViewController.m in Sources */,
 				50A37DD718DDCEB6005B2611 /* AppDelegate.m in Sources */,
 				508AFDE518DEE47D00230BC8 /* RoundRectButton.m in Sources */,
 				508AFDB118DDE1DD00230BC8 /* SelectVariantViewController.m in Sources */,
 				508AFDEE18E2EB3700230BC8 /* QuestItem.m in Sources */,
 				508AFDF118E2FC1400230BC8 /* QuestItemAnswer.m in Sources */,
 				50A37DD318DDCEB6005B2611 /* main.m in Sources */,
-				508AFDEB18E2E67C00230BC8 /* HomeViewController.m in Sources */,
+				508AFDEB18E2E67C00230BC8 /* SelectImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +479,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "image_quest/image_quest-Prefix.pch";
 				INFOPLIST_FILE = "image_quest/image_quest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -487,6 +494,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "image_quest/image_quest-Prefix.pch";
 				INFOPLIST_FILE = "image_quest/image_quest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -6,21 +6,21 @@
 //  Copyright (c) 2014 Max. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "SelectImageViewController.h"
 #import "SelectVariantViewController.h"
 #import "QuestItem.h"
 #import "QuestItemAnswer.h"
 #import "Game.h"
 #import "RoundRectButton.h"
 
-@interface HomeViewController ()
+@interface SelectImageViewController ()
 @property Game *game;
 @property NSArray *questItems;
 @property long nextQuestion;
 @property UIScrollView *scroll;
 @end
 
-@implementation HomeViewController
+@implementation SelectImageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +41,7 @@
     
     self.questItems = [self loadQuestions];
     
-    self.scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 70, self.view.frame.size.width, self.view.frame.size.height)];
+    self.scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(20.0f, 80.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
     
     [self.view addSubview:self.scroll];
     
@@ -62,61 +62,47 @@
     
     //    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageWithCIImage:cimage]];
     
-    float listHeight = 0;
+    int row = 0;
+    int col = 0;
+    float buttonSize = viewWidth/4;
+    float buttonVSeparator = 20.0f;
     
     for(int i = 0; i < self.questItems.count; i++) {
-        RoundRectButton *button = [RoundRectButton buttonWithType:UIButtonTypeRoundedRect];
-        float y = 10 + i * 50;
-        button.frame = CGRectMake(viewWidth / 10, y, viewWidth/10*8, 40);
-        
-        QuestItem *item = [self.questItems objectAtIndex:i];
-        NSString *suffix;
-        
-        if(item.answered) {
-            suffix = @"решено";
-        } else {
-            suffix = @"";
+        col = i % 3;
+        if (i> 0 && 0 == i % 3) {
+            row++;
         }
         
-        CIImage *image = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:item.img ofType:@"jpg"]]];
-
-        CIVector *cropRect =[CIVector vectorWithX:0 Y:0 Z: viewWidth/10*8 W: 10];
-        
-        CIImage *cropped = [image imageByCroppingToRect:CGRectMake(0, 0, viewWidth/10*8, 40)];
-        
-//        CIFilter *cropFilter = [CIFilter filterWithName:@"CICrop"];
-        
-//        [cropFilter setValue:image forKey:@"inputImage"];
-//        [cropFilter setValue:cropRect forKey:@"inputRectangle"];
-        
-//        CIImage *cropped = [cropFilter valueForKey:@"outputImage"];
-
-        
-//        CGImage
-//        CIContext *context = [[CIContext alloc] init];
-//        CGImageRef imageRef = [context createCGImage:image fromRect:CGRectMake(20, 20, 200, 40)];
-//        CIImage *cropped = [CIImage imageWithCGImage:imageRef];
-//        UIImage *cropped = [UIImage imageWithCGImage:imageRef];
-
-        UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithCIImage:cropped]];
-//        [self.scroll addSubview:iv];
-
-        
-        [button setBackgroundImage:[UIImage imageWithCIImage:cropped] forState:UIControlStateNormal];
-
-        
-        NSString *title = [NSString stringWithFormat:@"Картинка № %i %@", i+1, suffix];
-        button.tag = i;
+        NSLog(@"%i x %i", col, row);
+        RoundRectButton *button = [RoundRectButton buttonWithType:UIButtonTypeRoundedRect];
+        float y = row * (buttonSize + buttonVSeparator);
+        float x = col * (buttonSize + 20.0f);
+        button.frame = CGRectMake(x, y, buttonSize, buttonSize);
+//        [button setTitle:[NSString stringWithFormat:@"wtf %i", i] forState:UIControlStateNormal];
+//        button.layer.cornerRadius = 10;
+//        button.layer.borderWidth = 0.4f;
+//        button.clipsToBounds = YES;
         button.alpha = 0.5f;
-        [button setTitle:title forState:UIControlStateNormal];
+
         [button addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
-//        [button.layer setBorderWidth:0.4f];
+        button.tag = i;
         [self.scroll addSubview:button];
+
+        QuestItem *item = [self.questItems objectAtIndex:i];
+        CIImage *image = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:item.img ofType:@"jpg"]]];
         
-        listHeight = y + 150;
+//        CIVector *cropRect =[CIVector vectorWithX:0 Y:0 Z: 44.0f W: 10];
+//        UIImage *uiimage = [self imageWithImage: [UIImage imageWithCIImage:image] convertToSize: buttonSize * 2];
+
+        CIImage *cropped = [image imageByCroppingToRect:CGRectMake(100.0f, 100.0f, buttonSize, buttonSize)];
+        [button setBackgroundImage:[UIImage imageWithCIImage:cropped] forState:UIControlStateNormal];
+        
+        if(item.answered) {
+            button.alpha = 0.5f;
+        }
     }
-    
-    self.scroll.contentSize = CGSizeMake(viewWidth, listHeight);
+
+    self.scroll.contentSize = CGSizeMake(viewWidth, (row + 1) * (buttonSize + buttonVSeparator) + buttonSize);
 }
 
 - (void)selectImage:(UIButton*)sender

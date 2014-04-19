@@ -10,6 +10,7 @@
 #import "RoundRectButton.h"
 #import "QuestItemAnswer.h"
 #import "Game.h"
+#import "SelectImageViewController.h"
 
 @implementation SelectVariantViewController
 {
@@ -26,6 +27,7 @@
     NSArray *filters;
     int selectedFilter;
     UILabel *sliderLabel;
+    UIView *controlsView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -158,36 +160,51 @@
 
 - (void)showControls
 {
-    UISlider *slider = [[UISlider alloc]initWithFrame:CGRectMake(10.0f, 75.0f, self.view.bounds.size.width-80.0f, 20.0f)];
-    [slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventTouchUpInside];
-    [slider setMinimumValue:0.0f];
-    [slider setMaximumValue:99.0f];
-    [slider setValue:currentBlur];
-    slider.alpha = 0.5f;
-    [self.view addSubview:slider];
+    if (NULL == controlsView) {
+        controlsView = [[UIView alloc] init];
+        controlsView.frame = CGRectMake(0.0f, 75.0f, self.view.bounds.size.width, 500.0f);
+        
+        UISlider *slider = [[UISlider alloc]initWithFrame:CGRectMake(10.0f, 0.0f, self.view.bounds.size.width-40.0f, 20.0f)];
+        [slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventTouchUpInside];
+        [slider setMinimumValue:0.0f];
+        [slider setMaximumValue:99.0f];
+        [slider setValue:currentBlur];
+        [controlsView addSubview:slider];
     
-    sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-50.0f, 75.0f, 40.0f, 20.0f)];
-    sliderLabel.alpha = 0.5f;
-    [self.view addSubview:sliderLabel];
+        sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-30.0f, 0.0f, 40.0f, 20.0f)];
+
+        [controlsView addSubview:sliderLabel];
     
-    UISegmentedControl *filtersSelector = [[UISegmentedControl alloc] initWithFrame:CGRectMake(10.0f, 105.0f, self.view.bounds.size.width-20.0f, 30.0f)];
+        UISegmentedControl *filtersSelector = [[UISegmentedControl alloc] initWithFrame:CGRectMake(10.0f, 30.0f, self.view.bounds.size.width-20.0f, 30.0f)];
     
-    for(int i=0; i < filters.count; i++) {
-        [filtersSelector insertSegmentWithTitle:[filters objectAtIndex:i] atIndex:i animated:YES];
+        for(int i=0; i < filters.count; i++) {
+            [filtersSelector insertSegmentWithTitle:[filters objectAtIndex:i] atIndex:i animated:YES];
+        }
+    
+        [filtersSelector addTarget:self action:@selector(selectFilter:) forControlEvents:UIControlEventValueChanged];
+        [filtersSelector setSelectedSegmentIndex:selectedFilter];
+    
+    
+        [controlsView addSubview:filtersSelector];
+    
+        [self sliderChange:slider];
+        
+        [self.view addSubview:controlsView];
+        
+        controlsView.alpha = 0.4f;
+        controlsView.hidden = true;
     }
     
-    [filtersSelector addTarget:self action:@selector(selectFilter:) forControlEvents:UIControlEventValueChanged];
-    [filtersSelector setSelectedSegmentIndex:selectedFilter];
-    
-    filtersSelector.alpha = 0.5f;
-    
-    [self.view addSubview:filtersSelector];
-    
-    [self sliderChange:slider];
+    if (controlsView.hidden) {
+        controlsView.hidden = false;
+    } else {
+        controlsView.hidden = true;
+    }
 }
 
 - (IBAction)selectFilter:(UISegmentedControl*)segment
 {
+    NSLog(@"wtf?");
     selectedFilter = (int)[segment selectedSegmentIndex];
     [self drawImage:currentBlur];
 }
@@ -263,7 +280,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"ok %ld", (long)buttonIndex);
-    [self.navigationController popToRootViewControllerAnimated:true];
+//    [self.navigationController popToRootViewControllerAnimated:true];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 -(void)drawImage:(float)blur
