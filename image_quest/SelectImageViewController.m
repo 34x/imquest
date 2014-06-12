@@ -41,7 +41,7 @@
     
     self.questItems = [self loadQuestions];
     
-    self.scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(20.0f, 80.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
+    self.scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(20.0f, self.baseTopPadding + 10.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
     
     [self.view addSubview:self.scroll];
     
@@ -73,33 +73,37 @@
             row++;
         }
         
-        NSLog(@"%i x %i", col, row);
         RoundRectButton *button = [RoundRectButton buttonWithType:UIButtonTypeRoundedRect];
         float y = row * (buttonSize + buttonVSeparator);
         float x = col * (buttonSize + 20.0f);
         button.frame = CGRectMake(x, y, buttonSize, buttonSize);
-//        [button setTitle:[NSString stringWithFormat:@"wtf %i", i] forState:UIControlStateNormal];
+//        [button setTitle:[NSString stringWithFormat:@"?", i] forState:UIControlStateNormal];
 //        button.layer.cornerRadius = 10;
 //        button.layer.borderWidth = 0.4f;
 //        button.clipsToBounds = YES;
-        button.alpha = 0.5f;
 
         [button addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = i;
         [self.scroll addSubview:button];
 
         QuestItem *item = [self.questItems objectAtIndex:i];
-        CIImage *image = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:item.img ofType:@"jpg"]]];
         
 //        CIVector *cropRect =[CIVector vectorWithX:0 Y:0 Z: 44.0f W: 10];
 //        UIImage *uiimage = [self imageWithImage: [UIImage imageWithCIImage:image] convertToSize: buttonSize * 2];
 
+        CIImage *image = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:item.img ofType:@"jpg"]]];
+        
         CIImage *cropped = [image imageByCroppingToRect:CGRectMake(100.0f, 100.0f, buttonSize, buttonSize)];
         [button setBackgroundImage:[UIImage imageWithCIImage:cropped] forState:UIControlStateNormal];
         
         if(item.answered) {
-            button.alpha = 0.5f;
+           
+
+        } else {
+//            [button setBackgroundColor:[UIColor grayColor]];
         }
+
+//        NSLog(@"answered %i", item.answered);
     }
 
     self.scroll.contentSize = CGSizeMake(viewWidth, (row + 1) * (buttonSize + buttonVSeparator) + buttonSize);

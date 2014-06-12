@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "QuestItem.h"
 #import "Game.h"
+#import "BaseViewController.h"
 
-@interface SelectVariantViewController : UIViewController<UIAlertViewDelegate> 
+@interface SelectVariantViewController : BaseViewController<UIAlertViewDelegate>
 @property QuestItem *questItem;
 @property Game *game;
 

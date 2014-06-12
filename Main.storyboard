@@ -10,8 +10,8 @@
             <objects>
                 <viewController id="rQT-KI-HlM" customClass="SelectVariantViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IRU-LH-Tam"/>
-                        <viewControllerLayoutGuide type="bottom" id="u8N-kb-icv"/>
+                        <viewControllerLayoutGuide type="top" id="NFb-kk-Sno"/>
+                        <viewControllerLayoutGuide type="bottom" id="BDK-fC-fOX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0bx-xu-Kjc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -32,8 +32,8 @@
             <objects>
                 <viewController id="ihv-S5-oEo" customClass="PackViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LXL-sl-1pA"/>
-                        <viewControllerLayoutGuide type="bottom" id="Daq-Kr-3cj"/>
+                        <viewControllerLayoutGuide type="top" id="ePP-gf-3wm"/>
+                        <viewControllerLayoutGuide type="bottom" id="bmR-kp-zjW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0xv-Nk-aIy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -56,8 +56,8 @@
             <objects>
                 <viewController id="Ml0-Ig-SuL" customClass="SelectImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uFe-bF-Vg9"/>
-                        <viewControllerLayoutGuide type="bottom" id="ajS-8N-gms"/>
+                        <viewControllerLayoutGuide type="top" id="feO-ow-5DK"/>
+                        <viewControllerLayoutGuide type="bottom" id="mce-Pv-jie"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YGe-Ej-nyU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

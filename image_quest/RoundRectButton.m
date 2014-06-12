@@ -31,7 +31,7 @@
     self.layer.cornerRadius = 10;
     self.clipsToBounds = YES;
 
-    self.alpha = 0.8f;
+//    self.alpha = 0.8f;
 }
 
 

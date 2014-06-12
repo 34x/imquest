@@ -29,22 +29,31 @@
     // Do any additional setup after loading the view.
     float width = self.view.bounds.size.width;
     
-    NSArray *packList = [[NSArray alloc] initWithObjects:@"Cоветские фильмы", @"Голливудяне", @"Неизвестные лица", nil];
+//    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
+    
+    NSArray *packList = [[NSArray alloc] initWithObjects:@"Cоветские фильмы", @"Голливудяне", @"Неизвестные лица", @"Маевцы", @"Ребята с нашего двора", @"Герои комиксов", @"Исторические личности", @"Доисторические личности", nil];
+    
+
     
     for (int i = 0; i < packList.count; i++) {
-        UILabel *buttonIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, i*60+100.0f, 20.0f, 44.0f)];
+        UILabel *buttonIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, i*50 + self.baseTopPadding+10.0f, 20.0f, 44.0f)];
         [buttonIndexLabel setText:[NSString stringWithFormat:@"%i", i]];
+        buttonIndexLabel.alpha = 0.2f;
         [self.view addSubview:buttonIndexLabel];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
         [button setTitle:[packList objectAtIndex:i] forState:UIControlStateNormal];
         
-        button.frame = CGRectMake(width/8, i*60 + 100.0f, width - width/4, 44.0f);
+        button.frame = CGRectMake(width/8, i*50.0f + self.baseTopPadding + 10.0f, width - width/4, 44.0f);
         button.tag = i;
         
         [button addTarget:self action:@selector(selectPack:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:button];
+//        [table insertSubview:button atIndex:i];
     }
+    
+//    [self.view addSubview:table];
 }
 
 - (void) selectPack:(UIButton*) sender

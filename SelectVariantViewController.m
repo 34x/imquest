@@ -66,7 +66,7 @@
     hintUsed = NO;
     
     imageBlock = [[UIImageView alloc] init];
-    imageBlock.frame = CGRectMake(0.0f, 60.0f, self.view.bounds.size.width, self.view.bounds.size.height);
+    imageBlock.frame = CGRectMake(0.0f, self.baseTopPadding + 10.0f, self.view.bounds.size.width, self.view.bounds.size.width);
     
     [self.view addSubview:imageBlock];
 
@@ -86,11 +86,16 @@
     [self drawImage:currentBlur];
     
     variantsBlock = [[UIView alloc] init];
-    
-    variantsBlock.frame = CGRectMake(0.0f, self.view.bounds.size.height - 118, self.view.bounds.size.width, 118.0f);
+    NSLog(@"%f", self.view.bounds.size.height);
+    float variantsBlockY = self.view.bounds.size.height - 158.0f;
+    if([BaseViewController is7]) {
+        variantsBlockY = self.view.bounds.size.height - 118.0f;
+    }
+    variantsBlock.frame = CGRectMake(0.0f, variantsBlockY, self.view.bounds.size.width, 118.0f);
     [variantsBlock setBackgroundColor: [UIColor whiteColor]];
     variantsBlock.alpha = 0.8f;
 //    variantsBlock.opaque = NO;
+    
     [self.view addSubview:variantsBlock];
     
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] init];
@@ -120,14 +125,18 @@
         
         button.frame = CGRectMake(5.0 + (i % 2 * 160), y, 150.0, 44.0);
 //        button.backgroundColor = [UIColor greenColor];
-        [button.layer setBorderWidth:0.4f];
+//        [button.layer setBorderWidth:0.4f];
         //тут можно посмотреть на длинну заголовка и сделать шрифт поменьше
         //    name.length
         //max 17 symbols
         if(name.length > 15) {
-            
-            [button.titleLabel setFont:[UIFont systemFontOfSize:[UIFont buttonFontSize]-20.0f]];
+            float fontSize = [UIFont buttonFontSize] - 5.0f;
+            if ([BaseViewController is7]) {
+                fontSize = [UIFont buttonFontSize] - 20.0f;
+            }
+            [button.titleLabel setFont:[UIFont systemFontOfSize:fontSize]];
         }
+        
         [button addTarget:self action:@selector(selectVariant:) forControlEvents:UIControlEventTouchUpInside];
         
         
@@ -162,7 +171,7 @@
 {
     if (NULL == controlsView) {
         controlsView = [[UIView alloc] init];
-        controlsView.frame = CGRectMake(0.0f, 75.0f, self.view.bounds.size.width, 500.0f);
+        controlsView.frame = CGRectMake(0.0f, self.baseTopPadding + 5.0f, self.view.bounds.size.width, 500.0f);
         
         UISlider *slider = [[UISlider alloc]initWithFrame:CGRectMake(10.0f, 0.0f, self.view.bounds.size.width-40.0f, 20.0f)];
         [slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventTouchUpInside];
@@ -230,9 +239,9 @@
     [alert show];
 }
 
-- (void)updatePoints:(long)points
+- (void)updatePoints:(long)p
 {
-        navRightButton.title = [NSString stringWithFormat:@"%lu ОЧК", points];
+        navRightButton.title = [NSString stringWithFormat:@"%lu ОЧК", p];
 }
 
 - (void)showHelp
@@ -286,8 +295,13 @@
 
 -(void)drawImage:(float)blur
 {
+//    NSArray *filters = [CIFilter filterNamesInCategory:kCICategoryStylize];
+//    for(int i = 0; i < filters.count; i++){
+//        NSLog(@"filter %@", [filters objectAtIndex:i]);
+//    }
+//    return;
     [waitIndicator startAnimating];
-    
+
     dispatch_queue_t myQueue = dispatch_queue_create("image processing", NULL);
     
     dispatch_async(myQueue, ^{
@@ -307,15 +321,17 @@
         filter = [CIFilter filterWithName:@"CIGaussianBlur"];
         
         [filter setValue:image forKey:kCIInputImageKey];
-        [filter setValue: blurValue forKey:kCIInputRadiusKey];
+//        [filter setValue: blurValue forKey:kCIInputRadiusKey];
+        // ios 6, 7 working, code abow not working on 6
+        [filter setValue:blurValue forKey:@"InputRadius"];
     }
     else if (1 == selectedFilter)
     {
         filter = [CIFilter filterWithName:@"CIPixellate"];
         
         [filter setValue:image forKey:kCIInputImageKey];
-        [filter setValue: blurValue forKey:kCIInputScaleKey];
-
+//        [filter setValue: blurValue forKey:kCIInputScaleKey];
+        [filter setValue: blurValue forKey:@"InputScale"];
     }
     else if (2 == selectedFilter)
     {
