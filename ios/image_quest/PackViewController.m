@@ -40,15 +40,26 @@
         [buttonIndexLabel setText:[NSString stringWithFormat:@"%i", i]];
         buttonIndexLabel.alpha = 0.2f;
         [self.view addSubview:buttonIndexLabel];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
         
         [button setTitle:[packList objectAtIndex:i] forState:UIControlStateNormal];
         
         button.frame = CGRectMake(width/8, i*50.0f + self.baseTopPadding + 10.0f, width - width/4, 44.0f);
         button.tag = i;
+        button.contentEdgeInsets = UIEdgeInsetsMake(width /8, 10, 0, 0);
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+
+        UIProgressView *progress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        [progress setCenter:CGPointMake(0.0f, i*50.0f)];
+        progress.frame = CGRectMake(0.0f, i*50.0f + self.baseTopPadding + 50.0f, width, i*50.0f);
         
+        [progress setProgress:0.1f*i];
+        [progress setProgressTintColor:[UIColor greenColor]];
+
+//        progress.
         [button addTarget:self action:@selector(selectPack:) forControlEvents:UIControlEventTouchUpInside];
-        
+//        button.enabled = NO;
+        [self.view addSubview:progress];
         [self.view addSubview:button];
 //        [table insertSubview:button atIndex:i];
     }
