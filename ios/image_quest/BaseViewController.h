@@ -11,4 +11,5 @@
 @interface BaseViewController : UIViewController
 @property float baseTopPadding;
 + (bool) is7;
+- (void) drawList:(NSArray*)items actionTarget:(id)actionTarget actionSelector:(SEL)actionSelector;
 @end

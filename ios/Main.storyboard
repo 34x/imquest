@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Select Variant View Controller - Игра!-->
+        <!--Game View Controller - Игра!-->
         <scene sceneID="Zf3-A5-epI">
             <objects>
-                <viewController id="rQT-KI-HlM" customClass="SelectVariantViewController" sceneMemberID="viewController">
+                <viewController id="rQT-KI-HlM" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NFb-kk-Sno"/>
                         <viewControllerLayoutGuide type="bottom" id="BDK-fC-fOX"/>
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="1824" y="-949"/>
         </scene>
-        <!--Pack View Controller - Выбор пака-->
+        <!--Topic Select View Controller - Выбор темы-->
         <scene sceneID="Zbp-Sb-jOd">
             <objects>
-                <viewController id="ihv-S5-oEo" customClass="PackViewController" sceneMemberID="viewController">
+                <viewController id="ihv-S5-oEo" customClass="TopicSelectViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ePP-gf-3wm"/>
                         <viewControllerLayoutGuide type="bottom" id="bmR-kp-zjW"/>
@@ -40,21 +40,43 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Выбор пака" id="dNo-Tw-TcE">
+                    <navigationItem key="navigationItem" title="Выбор темы" id="dNo-Tw-TcE">
                         <barButtonItem key="backBarButtonItem" title="Паки" id="zKc-2T-sef"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="Ml0-Ig-SuL" kind="push" identifier="select_image" id="JUq-Uz-WPr"/>
+                        <segue destination="ceB-H8-ScZ" kind="push" identifier="level_select" id="ucc-WP-Ztx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DmI-cw-d8q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="-949"/>
+            <point key="canvasLocation" x="33" y="-949"/>
         </scene>
-        <!--Select Image View Controller - Выбор картинки-->
+        <!--Level Select View Controller - Выбор уровня-->
+        <scene sceneID="rut-3y-QIR">
+            <objects>
+                <viewController id="ceB-H8-ScZ" customClass="LevelSelectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QWC-55-Ab0"/>
+                        <viewControllerLayoutGuide type="bottom" id="eqA-Zf-Etp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="knJ-e8-kv9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Выбор уровня" id="rJj-TO-r55"/>
+                    <connections>
+                        <segue destination="Ml0-Ig-SuL" kind="push" identifier="question_select" id="eb9-8g-fie"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3f0-1r-SNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="601" y="-949"/>
+        </scene>
+        <!--Question Select View Controller - Выбор вопроса-->
         <scene sceneID="WzV-eB-q8Z">
             <objects>
-                <viewController id="Ml0-Ig-SuL" customClass="SelectImageViewController" sceneMemberID="viewController">
+                <viewController id="Ml0-Ig-SuL" customClass="QuestionSelectViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="feO-ow-5DK"/>
                         <viewControllerLayoutGuide type="bottom" id="mce-Pv-jie"/>
@@ -64,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Выбор картинки" id="PnP-t9-UmK">
+                    <navigationItem key="navigationItem" title="Выбор вопроса" id="PnP-t9-UmK">
                         <barButtonItem key="backBarButtonItem" title="Картинки" id="11Z-Zs-P7y"/>
                     </navigationItem>
                     <connections>
@@ -73,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9W5-Wt-lMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613" y="-949"/>
+            <point key="canvasLocation" x="1133" y="-949"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1jw-Kv-vJk">
