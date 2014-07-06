@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="1133" y="-949"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="1jw-Kv-vJk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ih-iX-zU2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ih-iX-zU2" customClass="UINavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="23z-dK-XPW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

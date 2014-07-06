@@ -47,6 +47,7 @@
 		50A37DEA18DDCEB6005B2611 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50A37DE818DDCEB6005B2611 /* InfoPlist.strings */; };
 		50A37DEC18DDCEB6005B2611 /* image_questTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A37DEB18DDCEB6005B2611 /* image_questTests.m */; };
 		50A37DF918DDD764005B2611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A37DF818DDD764005B2611 /* Main.storyboard */; };
+		50C1A26D196987F800AFD00D /* UINavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1A26C196987F800AFD00D /* UINavigationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		50A37DE918DDCEB6005B2611 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50A37DEB18DDCEB6005B2611 /* image_questTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = image_questTests.m; sourceTree = "<group>"; };
 		50A37DF818DDD764005B2611 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		50C1A26B196987F800AFD00D /* UINavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationViewController.h; sourceTree = "<group>"; };
+		50C1A26C196987F800AFD00D /* UINavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,8 @@
 				50A37DD818DDCEB6005B2611 /* Images.xcassets */,
 				50A37DCD18DDCEB6005B2611 /* Supporting Files */,
 				508AFDFA18E3183500230BC8 /* data.csv */,
+				50C1A26B196987F800AFD00D /* UINavigationViewController.h */,
+				50C1A26C196987F800AFD00D /* UINavigationViewController.m */,
 			);
 			path = image_quest;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				508AFDF118E2FC1400230BC8 /* QuestItemAnswer.m in Sources */,
 				50A37DD318DDCEB6005B2611 /* main.m in Sources */,
 				508AFDEB18E2E67C00230BC8 /* QuestionSelectViewController.m in Sources */,
+				50C1A26D196987F800AFD00D /* UINavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

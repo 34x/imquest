@@ -10,7 +10,7 @@
 #import "ListItem.h"
 
 @interface BaseViewController ()
-
+@property int lastId;
 @end
 
 @implementation BaseViewController
@@ -37,6 +37,26 @@
     if (version > 6.1f) {
         self.baseTopPadding = 60.0f;
     }
+
+    
+    // Кусок, отвечающий за автоматическое отображение нужного экрана при первом открытии приложения
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *breadcrumbs = [[NSMutableArray alloc] initWithArray:[defaults objectForKey:@"breadcrumbs"]];
+    
+    NSArray *levels = [[NSArray alloc] initWithObjects:@"TopicSelectViewController", @"LevelSelectViewController", @"QuestionSelectViewController", @"GameViewController", nil];
+    
+    int currentIndex = [levels indexOfObject:[NSString stringWithFormat:@"%@", self.class]];
+    NSLog(@"current index %i", currentIndex);
+    NSLog(@"count %i", breadcrumbs.count);
+    
+    if (breadcrumbs.count > currentIndex + 1) {
+        NSArray *crumb = [breadcrumbs objectAtIndex:currentIndex+1];
+        NSLog(@"must go to %@", crumb);
+        [self performSegueWithIdentifier:[crumb objectAtIndex:1] sender:self];
+    }
+    
+//    [self performSegueWithIdentifier:@"question_select" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,7 +127,31 @@
     [self.view addSubview:scroll];
 }
 
-/*
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    return;
+    
+    
+//    if([@"TopicSelectViewController" isEqual:[NSString stringWithFormat:@"%@", self.class]]) {
+//        [self performSegueWithIdentifier:@"level_select" sender:self];
+//    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"view will desappear");
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    NSLog(@"view did desappear");
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -115,7 +159,9 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    [super prepareForSegue:segue sender:sender];
+//    NSLog(@"segue to %@", [segue.destinationViewController class]);
 }
-*/
+
 
 @end

@@ -16,7 +16,7 @@
 @interface QuestionSelectViewController ()
 @property Game *game;
 @property NSArray *questItems;
-@property long nextQuestion;
+@property double nextQuestion;
 @property UIScrollView *scroll;
 @end
 
@@ -50,7 +50,6 @@
 
 - (void)drawScroll
 {
-    NSLog(@"drawScroll");
     for(UIView *sub in [self.scroll subviews])
     {
         [sub removeFromSuperview];
@@ -111,16 +110,15 @@
 
 - (void)selectImage:(UIButton*)sender
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setDouble:sender.tag forKey:@"nextQuestion"];
+    
     self.nextQuestion = sender.tag;
     [self performSegueWithIdentifier:@"game" sender:self];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"didappear");
-}
-
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"willappear");
+    [super viewWillAppear:animated];
     [self drawScroll];
 }
 
@@ -184,21 +182,27 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [super prepareForSegue:segue sender:sender];
     GameViewController *vc = [segue destinationViewController];
     
-//    NSLog(@"items count %lu", items.count);
+    if (nil == self.questItems) {
+        self.questItems = [self loadQuestions];
+    }
+    
+    NSLog(@"qi %@", self.questItems);
 //    int index = arc4random_uniform((int)self.questItems.count);
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.nextQuestion = [defaults doubleForKey:@"nextQuestion"];
     vc.questItem = [self.questItems objectAtIndex:self.nextQuestion];
     vc.game = self.game;
     
-
     
     // Pass any objects to the view controller here, like...
 //    [vc setMyObjectHere:object];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    NSLog(@"segue to %@", [segue identifier]);
+    NSLog(@"go to the game with nextQuestion %f", self.nextQuestion);
 }
 
 
