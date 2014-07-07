@@ -56,7 +56,7 @@
     
     navRightButton = [[UIBarButtonItem alloc] initWithTitle:@"ОЧК" style:UIBarButtonItemStylePlain target:self action:@selector(touchNavRight:)];
     
-    [self updatePoints:self.game.points];
+    [self updatePoints:[self.game getPoints]];
     
     self.navigationItem.rightBarButtonItem = navRightButton;
     
@@ -270,7 +270,7 @@
         title = @"Верный ответ";
         msg = @"Молодчинка!";
         self.questItem.answered = YES;
-        self.game.points += points;
+        [self.game addPoints:points];
     } else {
         title = @"Хреновый ответ :(";
         msg = @"повезет в другой раз";
@@ -281,7 +281,7 @@
     
     self.questItem.tryCount++;
     
-    [self updatePoints:self.game.points];
+    [self updatePoints:[self.game getPoints]];
 
 }
 

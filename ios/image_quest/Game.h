@@ -10,6 +10,7 @@
 
 @interface Game : NSObject
 @property int scores;
-@property long points;
-+(id)initWithPoints:(long)points;
++ (id) load;
+- (int) getPoints;
+- (int) addPoints:(int)points;
 @end

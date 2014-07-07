@@ -37,7 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"didload");
-    self.game = [Game initWithPoints:100];
+    self.game = [Game load];
     
     self.questItems = [self loadQuestions];
     
